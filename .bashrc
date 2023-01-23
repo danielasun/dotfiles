@@ -116,5 +116,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+
 # ROS specific
 export ROS_DOMAIN_ID=0
+
