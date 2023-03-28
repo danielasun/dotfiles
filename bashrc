@@ -122,6 +122,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 
-# ROS specific
-export ROS_DOMAIN_ID=0
-
+# Offworld specific, only source one of these:
+# source ~/ubuntu_config/ow_surveyor.sh
+source ~/ubuntu_config/ow_excavator.sh
