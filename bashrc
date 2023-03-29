@@ -117,11 +117,12 @@ if ! shopt -oq posix; then
 fi
 
 
-# virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
+source ~/.dotfiles_config/bashrc_common.sh
+
+# robocup (RoMeLa specific)
+source ~/.dotfiles_config/robocup_aliases.sh
 
 # Offworld specific, only source one of these:
 # source ~/ubuntu_config/ow_surveyor.sh
-source ~/ubuntu_config/ow_excavator.sh
+source ~/.dotfiles_config/ow_excavator.sh
+
