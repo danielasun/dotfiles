@@ -124,5 +124,5 @@ source ~/.dotfiles_config/robocup_aliases.sh
 
 # Offworld specific, only source one of these:
 # source ~/ubuntu_config/ow_surveyor.sh
-source ~/.dotfiles_config/ow_excavator.sh
+# source ~/.dotfiles_config/ow_excavator.sh
 
