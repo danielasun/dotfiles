@@ -1,6 +1,6 @@
 # commands for excavator development
 
-source ~/.dotfiles_config/ow_aliases.sh
+source ~/.dotfiles/ow_aliases.sh
 
 source ~/ve/py38/bin/activate
 export OFFWORLD_ROOT=/home/dsun/offworld

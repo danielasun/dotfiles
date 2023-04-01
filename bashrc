@@ -117,12 +117,12 @@ if ! shopt -oq posix; then
 fi
 
 
-source ~/.dotfiles_config/bashrc_common.sh
+source ~/.dotfiles/bashrc_common.sh
 
 # robocup (RoMeLa specific)
-source ~/.dotfiles_config/rml_conf.sh
+source ~/.dotfiles/rml_conf.sh
 
 # Offworld specific, only source one of these:
-# source ~/ubuntu_config/ow_surveyor.sh
-# source ~/.dotfiles_config/ow_excavator.sh
+# source ~/.dotfiles/ow_surveyor.sh
+# source ~/.dotfiles/ow_excavator.sh
 
