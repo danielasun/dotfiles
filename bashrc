@@ -120,7 +120,7 @@ fi
 source ~/.dotfiles/bashrc_common.sh
 
 # robocup (RoMeLa specific)
-source ~/.dotfiles/rml_conf.sh
+# source ~/.dotfiles/rml_conf.sh
 
 # Offworld specific, only source one of these:
 # source ~/.dotfiles/ow_surveyor.sh

@@ -3,8 +3,8 @@
 source ~/.dotfiles/ow_aliases.sh
 
 source ~/ve/py38/bin/activate
-export OFFWORLD_ROOT=/home/dsun/offworld
-export OFFWORLD_HOME=/home/dsun
+export OFFWORLD_ROOT=/home/offworld/swarm-robotic-mining
+export OFFWORLD_HOME=/home/offworld
 source /opt/ros/noetic/setup.bash
 
 # SRM Path
@@ -14,4 +14,7 @@ export GAZEBO_MODEL_PATH=/home/dsun/swarm-robotic-mining/catkin_ws/src/bot_digge
 # ROS
 export ROS_MASTER_URI=http://localhost:11311
 export ROS_HOSTNAME=localhost
-source /home/dsun/swarm-robotic-mining/catkin_ws/devel/setup.bash --extend
+# source /home/dsun/swarm-robotic-mining/catkin_ws/devel/setup.bash --extend
+
+# convenience aliases
+alias ow_catkin_blacklist="catkin_make -DCATKIN_BLACKLIST_PACKAGES=\"openrave_catkin;or_dynamics;or_urdf\" -j4"
