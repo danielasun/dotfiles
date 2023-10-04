@@ -1,6 +1,6 @@
 #!/bin/bash
 apt update
-apt install git vim tmux
+apt install git vim tmux curl
 
 # python, pip and virtual environment
 apt install python3-dev python3-pip virtualenv virtualenvwrapper
