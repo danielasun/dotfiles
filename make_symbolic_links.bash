@@ -8,4 +8,5 @@ ln -sf ${SCRIPT_DIR} ~/.dotfiles  # makes a symbolic link to this folder so that
 ln -sf ${SCRIPT_DIR}/bashrc ~/.bashrc
 ln -sf ${SCRIPT_DIR}/bash_aliases ~/.bash_aliases
 ln -sf ${SCRIPT_DIR}/tmux.conf ~/.tmux.conf
+ln -sf ${SCRIPT_DIR}/gitignore_global ~/.gitignore
 
