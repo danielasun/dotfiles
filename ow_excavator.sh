@@ -1,6 +1,6 @@
 # commands for excavator development
 
-source ~/.dotfiles/ow_aliases.sh
+source ~/.dotfiles/ow_symbols.sh
 
 source ~/ve/py38/bin/activate
 export OFFWORLD_ROOT=/home/offworld/swarm-robotic-mining

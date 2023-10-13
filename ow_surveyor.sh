@@ -2,7 +2,7 @@
 
 # ow_bash.sh
 
-source ~/.dotfiles/ow_aliases.sh
+source ~/.dotfiles/ow_symbols.sh
 
 # ROS specific
 export ROS_DOMAIN_ID=100
