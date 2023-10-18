@@ -21,3 +21,9 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 # Check that docker is working
 sudo docker run hello-world
+
+# docker without sudo
+sudo groupadd docker
+sudo usermod -aG docker $USER
+echo "Added $USER to the docker user group."
+echo "Log out and back in after running this command so that your group membership is re-evaluated."
