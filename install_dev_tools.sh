@@ -4,6 +4,8 @@ sudo apt install -y git vim tmux curl
 
 # python, pip and virtual environment
 sudo apt install -y python3-dev python3-pip
+pip3 install virtualenv virtualenvwrapper # local install of virtualenv and virtualenvwrapper
+source ~/.local/bin/virtualenvwrapper.sh # create hooks
 
 sudo snap install sublime-text --classic
 sudo snap install sublime-merge --classic
