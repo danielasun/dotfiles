@@ -1,3 +1,6 @@
 [submodule "Gogh"]
 	path = Gogh
 	url = https://github.com/Gogh-Co/Gogh.git
+[submodule "gnome-terminal"]
+	path = gnome-terminal
+	url = https://github.com/nordtheme/gnome-terminal.git

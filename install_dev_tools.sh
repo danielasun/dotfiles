@@ -1,4 +1,7 @@
 #!/bin/bash
+
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+
 sudo apt update
 sudo apt install -y git vim tmux curl
 
@@ -26,3 +29,4 @@ sudo apt-get install dconf-cli uuid-runtime  # gogh dependencies
 
 # install nord theme 
 export TERMINAL=gnome-terminal
+$SCRIPT_DIR/gnome-terminal/src/nord.sh
