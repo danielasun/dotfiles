@@ -15,11 +15,11 @@ sudo snap install sublime-merge --classic
 sudo snap install chromium
 sudo snap install code --classic
 
-
+# update submodules
 git submodule update --init --recursive
 
 # tmux: 
-apt install fonts-powerline xsel
+sudo apt install fonts-powerline xsel
 fc-cache -vf ~/.local/share/fonts  # installs locally installed fonts
 
 
