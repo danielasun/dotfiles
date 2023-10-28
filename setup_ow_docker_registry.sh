@@ -33,14 +33,19 @@ kirSLEO052SIN2DXPDeJUzcLPsv84mP+EgOpqBSnpCdP6eVhgTmTWz3oZWKIyWEo
 46ha0hIAAqk=
 -----END CERTIFICATE-----" > ca.crt
 
-sudo su
 COMMON=ow-us00-docker01.offworld.ai
 
-mkdir /usr/local/share/ca-certificates/${COMMON}
-mkdir -p /etc/docker/certs.d/${COMMON}
-cp ca.crt /usr/local/share/ca-certificates/${COMMON}/
-cp ca.crt /etc/docker/certs.d/${COMMON}/
-update-ca-certificates
-systemctl daemon-reload
-service docker restart
-rm ca.crt
+sudo mkdir /usr/local/share/ca-certificates/${COMMON}
+sudo mkdir -p /etc/docker/certs.d/${COMMON}
+sudo cp ca.crt /usr/local/share/ca-certificates/${COMMON}/
+sudo cp ca.crt /etc/docker/certs.d/${COMMON}/
+sudo update-ca-certificates
+sudo systemctl daemon-reload
+sudo service docker restart
+sudo rm ca.crt
+
+# add hostname
+sudo sed -i '1s/^/"10.0.3.12   ow-us00-docker01.offworld.ai"/' /etc/hosts
+telnet ow-us00-docker01.offworld.ai 5000
+
+# TODO: still not working, probably need to restart and log back in?
