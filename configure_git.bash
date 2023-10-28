@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Note: this doesn't work being run from the terminal, you have to run the commands individually from the command line?
-
+# Configure git with email and username, symlink to global gitignore
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 git config --global user.email "sundaniel3@gmail.com"
 git config --global user.name "Daniel Sun"
 
