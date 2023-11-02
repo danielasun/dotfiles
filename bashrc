@@ -123,7 +123,6 @@ source ~/.dotfiles/bashrc_common.sh
 # source ~/.dotfiles/rml_conf.sh
 
 # Offworld specific, only source one of these:
-source ~/dotfiles/ow_symbols.sh
-source ~/.dotfiles/ow_surveyor.sh
+source ~/dotfiles/offworld-setup/ow_bashrc.sh
 # source ~/.dotfiles/ow_excavator.sh
 
