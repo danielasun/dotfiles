@@ -4,3 +4,6 @@
 [submodule "gnome-terminal"]
 	path = gnome-terminal
 	url = https://github.com/nordtheme/gnome-terminal.git
+[submodule "offworld-setup"]
+	path = offworld-setup
+	url = git@github.com:danielasun/offworld-setup
