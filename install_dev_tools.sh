@@ -3,7 +3,7 @@
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 sudo apt update
-sudo apt install -y git vim tmux curl tree
+sudo apt install -y git vim tmux curl tree htop
 
 # python, pip and virtual environment
 sudo apt install -y python3-dev python3-pip
