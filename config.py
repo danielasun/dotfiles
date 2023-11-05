@@ -42,8 +42,8 @@ def create_settings_from_hostname(profile_file_path, hostname, DEBUG=False):
 
     print(f"Data has been written to {output_config_file_path}")
 
-def read_config(config_file_path, hostname=None, DEBUG=False)-> dict:
-    # Read config and return all data
+def read_config(keys, config_file_path, hostname=None, DEBUG=False)-> dict:
+    # Read config and return data from key-value pairs. If no keys are given, return all key-value pairs
 
     if hostname is None:
         hostname = socket.gethostname()
@@ -52,18 +52,17 @@ def read_config(config_file_path, hostname=None, DEBUG=False)-> dict:
 
     with open(config_file_path, 'r') as file:
         yaml_data = yaml.load(file, Loader=yaml.FullLoader)[hostname]
-
+        
         if DEBUG:
             print(yaml_data)
 
-        # set all keys to environment variables
-        for key in yaml_data:
-            value = yaml_data[key]
-            print(key, value)
-            if not isinstance(value, list):
-                os.environ[key] = str(value)
-        return yaml_data
-    
+        # print keys, transitioning all to uppercase. If there aren't any keys provided, print them all
+        if len(keys) == 0:
+            keys=yaml_data.keys()
+        for k in keys:
+            out=f"{k.upper()}={yaml_data[k]}"
+            print(out)
+        
 
 if __name__ == "__main__":
     # Create an ArgumentParser object
@@ -90,6 +89,8 @@ if __name__ == "__main__":
 
     # read command
     read_command = subparsers.add_parser("read", help="read config file based on hostname")
+    read_command.add_argument("keys", nargs='*', type=str,
+                              help="keys to read")
     read_command.add_argument("--config",
                                 default=OUTPUT_CONFIG_FILE_PATH_DEFAULT,
                                 help="Argument for command1")
@@ -109,7 +110,7 @@ if __name__ == "__main__":
     if args.command == "gen":
         create_settings_from_hostname(args.profile_location, args.hostname, args.debug)
     elif args.command == "read":
-        read_config(args.config, args.hostname, args.debug)
+        read_config(args.keys, args.config, args.hostname,  args.debug)
 
 
 
