@@ -1,0 +1,10 @@
+dsun-T14-g3:
+    usecase: "personal"
+    offworld-setup: False
+
+dsun-T15p-g3:
+    usecase: "business"
+    offworld-setup: True
+
+
+
