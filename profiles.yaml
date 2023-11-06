@@ -1,0 +1,12 @@
+dsun-T14-g3:
+    usecase: "personal"
+    offworld-setup: False
+    ROS_distros: ["humble"]
+
+dsun-T15p-g3:
+    usecase: "business"
+    offworld-setup: True
+    ROS_distros: ["noetic", "galactic"]
+
+
+
