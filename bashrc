@@ -119,10 +119,20 @@ fi
 
 source ~/.dotfiles/bashrc_common.sh
 
+SCRIPT_DIR=~/dotfiles
+
+# read gen file to temp location, export config variables
+$TEMP_CONFIG_LOCATION=$SCRIPT_DIR/temp_config.yaml
+python $SCRIPT_DIR/config.py gen --profile_location $SCRIPT_DIR/profiles.yaml
+python $SCRIPT_DIR/config.py read --config $TEMP_CONFIG_LOCATION | while IFS= read -r var; do export "$var"; done
+rm $TEMP_CONFIG_LOCATION
+
 # robocup (RoMeLa specific)
 # source ~/.dotfiles/rml_conf.sh
 
 # Offworld specific, only source one of these:
-source ~/dotfiles/offworld-setup/ow_bashrc.sh
+if [ "$offworld_setup" = "true" ]; then
+    source ${SCRIPT_DIR}/offworld-setup/ow_bashrc.sh
+fi
 # source ~/.dotfiles/ow_excavator.sh
 
