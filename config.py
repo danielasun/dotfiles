@@ -25,6 +25,17 @@ def bool_filter(val):
             return 'true'
     else:
         return val
+    
+def print_keys_for_export(yaml_data, keys, DEBUG=False):
+    if DEBUG:
+        print(yaml_data)
+
+    # print keys, transitioning all to uppercase. If there aren't any keys provided, print them all
+    if len(keys) == 0:
+        keys=yaml_data.keys()
+    for k in keys:
+        out=f"{k.upper()}={bool_filter(yaml_data[k])}"
+        print(out)
 
 def create_settings_from_hostname(profile_file_path, hostname, filename=None, DEBUG=False):
 
@@ -41,9 +52,9 @@ def create_settings_from_hostname(profile_file_path, hostname, filename=None, DE
         print("Edited YAML data:")
         print(yaml_data)
 
-    # Either write data to file, or output as string
+    # Either write YAML data to file, or output as string
     if filename is None:
-        print(yaml.dump(yaml_data[hostname]))
+        print_keys_for_export(yaml_data[hostname], keys=())
     else:
         # Write the data to the YAML file
         with open(filename, 'w') as file:
@@ -64,16 +75,7 @@ def read_config(keys, config_file_path, hostname=None, DEBUG=False)-> dict:
     with open(config_file_path, 'r') as file:
         yaml_data = yaml.load(file, Loader=yaml.FullLoader)[hostname]
         
-        if DEBUG:
-            print(yaml_data)
-
-        # print keys, transitioning all to uppercase. If there aren't any keys provided, print them all
-        if len(keys) == 0:
-            keys=yaml_data.keys()
-        for k in keys:
-            out=f"{k.upper()}={bool_filter(yaml_data[k])}"
-            print(out)
-        
+    print_keys_for_export(yaml_data, keys, DEBUG)        
 
 if __name__ == "__main__":
     # Create an ArgumentParser object
@@ -86,7 +88,7 @@ if __name__ == "__main__":
     gen_command = subparsers.add_parser("gen", help="generate config file based on hostname")
     gen_command.add_argument("--profile_location", 
                                 default=PROFILE_FILE_PATH,
-                                help="Location to store profile.yaml")
+                                help="Location to read profile YAML from")
     
     gen_command.add_argument("--hostname", 
                                 default=socket.gethostname(),
