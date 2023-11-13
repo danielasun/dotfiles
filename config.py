@@ -16,8 +16,28 @@ PROFILE_FILE_PATH = "profiles.yaml"
 OUTPUT_CONFIG_FILE_PATH = "config.yaml"
 OUTPUT_CONFIG_FILE_PATH_DEFAULT = "config.yaml"
 
+def bool_filter(val):
+    # returns false and true strings if val, otherwise passes value through
+    if isinstance(val, bool):
+        if val == False:
+            return 'false'
+        elif val == True:
+            return 'true'
+    else:
+        return val
+    
+def print_keys_for_export(yaml_data, keys, DEBUG=False):
+    if DEBUG:
+        print(yaml_data)
 
-def create_settings_from_hostname(profile_file_path, hostname, DEBUG=False):
+    # print keys, transitioning all to uppercase. If there aren't any keys provided, print them all
+    if len(keys) == 0:
+        keys=yaml_data.keys()
+    for k in keys:
+        out=f"{k.upper()}={bool_filter(yaml_data[k])}"
+        print(out)
+
+def create_settings_from_hostname(profile_file_path, hostname, filename=None, DEBUG=False):
 
     # Open and read the YAML file
     with open(profile_file_path, 'r') as file:
@@ -32,15 +52,17 @@ def create_settings_from_hostname(profile_file_path, hostname, DEBUG=False):
         print("Edited YAML data:")
         print(yaml_data)
 
+    # Either write YAML data to file, or output as string
+    if filename is None:
+        print_keys_for_export(yaml_data[hostname], keys=())
+    else:
+        # Write the data to the YAML file
+        with open(filename, 'w') as file:
+            yaml.dump(yaml_data[hostname], file)
 
-    # Specify the path to the YAML file you want to create or write to
-    output_config_file_path = OUTPUT_CONFIG_FILE_PATH_DEFAULT
+        if DEBUG:
+            print(f"Data has been written to {filename}")
 
-    # Write the data to the YAML file
-    with open(output_config_file_path, 'w') as file:
-        yaml.dump(yaml_data, file)
-
-    print(f"Data has been written to {output_config_file_path}")
 
 def read_config(keys, config_file_path, hostname=None, DEBUG=False)-> dict:
     # Read config and return data from key-value pairs. If no keys are given, return all key-value pairs
@@ -53,16 +75,7 @@ def read_config(keys, config_file_path, hostname=None, DEBUG=False)-> dict:
     with open(config_file_path, 'r') as file:
         yaml_data = yaml.load(file, Loader=yaml.FullLoader)[hostname]
         
-        if DEBUG:
-            print(yaml_data)
-
-        # print keys, transitioning all to uppercase. If there aren't any keys provided, print them all
-        if len(keys) == 0:
-            keys=yaml_data.keys()
-        for k in keys:
-            out=f"{k.upper()}={yaml_data[k]}"
-            print(out)
-        
+    print_keys_for_export(yaml_data, keys, DEBUG)        
 
 if __name__ == "__main__":
     # Create an ArgumentParser object
@@ -75,7 +88,7 @@ if __name__ == "__main__":
     gen_command = subparsers.add_parser("gen", help="generate config file based on hostname")
     gen_command.add_argument("--profile_location", 
                                 default=PROFILE_FILE_PATH,
-                                help="Argument for command1")
+                                help="Location to read profile YAML from")
     
     gen_command.add_argument("--hostname", 
                                 default=socket.gethostname(),
@@ -86,6 +99,7 @@ if __name__ == "__main__":
                                 action="store_true",
                                 help="Toggle printing debug messages",
                                 )
+    gen_command.add_argument("--filename", help="output to file instead of a string")
 
     # read command
     read_command = subparsers.add_parser("read", help="read config file based on hostname")
@@ -108,9 +122,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     if args.command == "gen":
-        create_settings_from_hostname(args.profile_location, args.hostname, args.debug)
+        create_settings_from_hostname(args.profile_location, args.hostname, args.filename, args.debug)
     elif args.command == "read":
-        read_config(args.keys, args.config, args.hostname,  args.debug)
+        read_config(args.keys, args.config, args.hostname, args.debug)
 
 
 
