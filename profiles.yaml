@@ -3,6 +3,8 @@ dsun-T14-g3:
     offworld_setup: False
     ROS_distros: ["humble"]
     environment_variables:
+    - DS_PROFILE_CONFIG: True
+
 
 OWUS-DSUN-UL:
     usecase: "business"
@@ -13,11 +15,7 @@ OWUS-DSUN-UL:
 
 default:
     usecase: "personal"
-    offworld-setup: False
+    offworld_setup: False
     environment_variables:
     - DS_PROFILE_CONFIG: True
-
-default:
-    usecase: "business"
-    offworld_setup: False
 

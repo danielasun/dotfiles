@@ -130,7 +130,7 @@ done < <(python $SCRIPT_DIR/config.py gen --profile_location $SCRIPT_DIR/profile
 # source ~/.dotfiles/rml_conf.sh
 
 # Offworld specific, only source one of these:
-if [ "$offworld_setup" = "true" ]; then
+if [ "$OFFWORLD_SETUP" = "true" ]; then
     source ${SCRIPT_DIR}/offworld-setup/ow_bashrc.sh
 fi
 
