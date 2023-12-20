@@ -13,6 +13,14 @@ OWUS-DSUN-UL:
     environment_variables:
     - DS_PROFILE_CONFIG: True
 
+norns:
+    usecase: "personal"
+    offworld_setup: False
+    ROS_distros: []
+    environment_variables:
+    - DS_PROFILE_CONFIG: True
+    - DS_PROFILE_NORNS: True
+
 default:
     usecase: "personal"
     offworld_setup: False
